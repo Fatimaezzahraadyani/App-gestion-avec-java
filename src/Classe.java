@@ -7,6 +7,7 @@ public class Classe {
     public Classe(String nom, Formateur formateur) {
         this.nom = nom;
         this.formateur = formateur;
+
     }
 
     public String getNom() {

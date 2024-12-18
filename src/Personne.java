@@ -4,12 +4,14 @@ public abstract class Personne {
     private String prenom;
     private String email;
 
+
+
     public Personne(int Id,String nom,String prenom,String email){
-        this.nom = nom;
-        this.prenom = prenom ;
-        this.email = email;
-        Id = 0 ;
-    }
+         this.nom = nom;
+         this.prenom = prenom ;
+         this.email = email;
+         this.Id = Id ;
+     }
 
     public int getId() {
         return Id;
@@ -45,12 +47,11 @@ public abstract class Personne {
 
     @Override
     public String toString() {
-        return "Personne{" +
-                "Id=" + Id +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "Personne : \n"
+                +"\n nom = " + nom
+                +"\n prenom = " + prenom
+                +"\n email = " + email
+                +"\n Id =" + Id ;
     }
 
 }
