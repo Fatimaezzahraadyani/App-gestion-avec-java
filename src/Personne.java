@@ -13,6 +13,9 @@ public abstract class Personne {
          this.Id = Id ;
      }
 
+    public Personne() {
+    }
+
     public int getId() {
         return Id;
     }

@@ -1,12 +1,17 @@
 import java.util.*;
 public class Classe {
+    static ArrayList<Classe> classe = new ArrayList<>();
     private String nom;
     private Formateur formateur;
     ArrayList<Apprenant> Apprenants = new ArrayList<>();
 
-    public Classe(String nom, Formateur formateur) {
+    public Classe(String nom) {
         this.nom = nom;
-        this.formateur = formateur;
+
+
+    }
+
+    public Classe() {
 
     }
 
@@ -32,6 +37,14 @@ public class Classe {
 
     public void setApprenants(ArrayList<Apprenant> apprenants) {
         Apprenants = apprenants;
+    }
+    static Scanner sc = new Scanner(System.in);
+    public static void AjouterClasse(){
+        System.out.println("entrer un nom : ");
+        String nom = sc.nextLine();
+        //Formateur Fr = new Formateur();
+        Classe a = new Classe (nom);
+        classe.add(a);
     }
 }
 

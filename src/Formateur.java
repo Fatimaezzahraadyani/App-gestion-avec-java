@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Formateur extends Personne{
+    static ArrayList<Formateur> formateur = new ArrayList<>();
     private String specialite;
     private double salaire;
     private Classe classe;
@@ -12,6 +14,9 @@ public class Formateur extends Personne{
         this.specialite = specialite;
         this.salaire = salaire;
         this.classe = classe ;
+
+    }
+    public Formateur(){
 
     }
 
@@ -38,41 +43,90 @@ public class Formateur extends Personne{
     public void setClasse(Classe classe) {
         this.classe = classe;
     }
-    Scanner sc = new Scanner(System.in);
-    public void AjouterFormateur(){
+    static Scanner sc = new Scanner(System.in);
+    public Formateur AjouterFormateur(){
+
         System.out.println("entrer un nom : ");
         String nom=sc.nextLine();
-        setNom(nom);
+
         System.out.println("entrer un prenom : ");
         String prenom=sc.nextLine();
-        setPrenom(prenom);
+
         System.out.println("entrer un Id : ");
         int Id=sc.nextInt();
-        setId(Id);
+        sc.nextLine();
+
         System.out.println("enter un email : ");
         String email=sc.nextLine();
-        setEmail(email);
+
+        System.out.println("entrer la spécialiter : ");
+        String specialite=sc.nextLine();
+
+        System.out.println("entrer le salaire : ");
+        double salaire=sc.nextDouble();
+
+
+        Formateur a=new Formateur(Id,nom,prenom,email,specialite,salaire,null);
+        formateur.add(a);
+        return a;
     }
-    public void AfficherFormateur(){
-        System.out.println(getNom());
-        System.out.println(getPrenom());
-        System.out.println(getId());
-        System.out.println(getEmail());
+    public void AfficherFormateur(Formateur a){
+        System.out.println(a.toString());
     }
-    public void Modifierformateur(){
+    public void ModifierFormateur(){
+        System.out.println("Veuillez saisir ID de formateur : ");
+        int id= sc.nextInt();
+
         System.out.println("entrer le nouveau nom : ");
         String name=sc.nextLine();
-        setNom(name);
+
         System.out.println("entrer le nouveau prenom : ");
         String prenom=sc.nextLine();
-        setPrenom(prenom);
+
         System.out.println("entrer le nouveau Id : ");
         int Id=sc.nextInt();
-        setId(Id);
-        System.out.println("entrer le nouveau email : ");
-        String email=sc.nextLine();
-        setEmail(email);
-        AfficherFormateur();
-    }
+        sc.nextLine();
 
+        System.out.println("entrer le nouveau email : ");
+        String email =sc.nextLine();
+
+        System.out.println("entrer la nouvelle specialiter :");
+        String specialite=sc.next();
+
+        System.out.println("entrer le nouveau salaire :");
+        double salaire=sc.nextDouble();
+
+        Formateur a = new Formateur(id,name,prenom,email,specialite,salaire,null);
+        formateur.set(id,a);
+        AfficherFormateur(a);
+    }
+    public void AssocierFormateur() {
+        System.out.println("entre l'Id du  formateur : ");
+
+        Formateur b = null;
+        for (Formateur a : formateur) {
+            if (a.getId() == sc.nextInt()) {
+                b = a;
+            }
+        }
+        System.out.println("entre le nom de classe");
+        ArrayList<Classe> C = Classe.classe;
+        for (Classe a : C) {
+            if (a.getNom().equals(sc.nextLine())) {
+                Classe cl = a;
+            }
+        }
+        classe.setFormateur(b);
+        System.out.println("Bien Associer !");
+
+    }
+    public void SupprimerFormateur(){
+        System.out.println("entre l'Id de formateur que vous voullez :");
+        for (Formateur a : formateur) {
+            if (a.getId() == sc.nextInt()) {
+                formateur.remove(a);
+            }
+        }
+    }
 }
+
