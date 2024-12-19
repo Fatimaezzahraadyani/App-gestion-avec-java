@@ -77,7 +77,27 @@ public class Apprenant extends Personne{
         AfficherApprenant(a);
 
     }
-    public void SuppApprenants(){
+    public void AssocierApprenant(){
+        System.out.println("entrer l'Id d'apprenant :");
+        Apprenant p = null;
+        for (Apprenant a : appr){
+            if(a.getId() == sc.nextInt()){
+                p = a;
+            }
+        }
+        System.out.println("entre le nom de classe");
+        ArrayList<Classe> C = Classe.classe;
+            for (Classe a : C) {
+                if (a.getNom().equals(sc.nextLine())) {
+                    a.Apprenants.add(p);
+                    System.out.println("Bien Associer !");
+                }else{
+                    System.out.println("cree une classe premiérement");
+                }
+
+            }
+    }
+    public void SuppApprenant(){
         System.out.println("Veuillez saisir ID d'apprenant que vous voulez supprimer: ");
         int Id = sc.nextInt();
         for (Apprenant a : appr){

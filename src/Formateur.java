@@ -76,6 +76,7 @@ public class Formateur extends Personne{
     public void ModifierFormateur(){
         System.out.println("Veuillez saisir ID de formateur : ");
         int id= sc.nextInt();
+        sc.nextLine();
 
         System.out.println("entrer le nouveau nom : ");
         String name=sc.nextLine();
@@ -126,7 +127,18 @@ public class Formateur extends Personne{
             if (a.getId() == sc.nextInt()) {
                 formateur.remove(a);
             }
+
         }
     }
+
+    @Override
+    public String toString() {
+        return "Formateur{" +
+                "specialite='" + specialite + '\'' +
+                ", salaire=" + salaire +
+                ", classe=" + classe +
+                '}';
+    }
 }
+
 

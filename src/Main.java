@@ -70,17 +70,17 @@ public class Main {
                     Ap.ModifierApprenant();//modifier apprenant
                     break;
                 case 3:
-                    //associer un apprenant
+                    Ap.AssocierApprenant();//associer un apprenant
                     break;
                 case 4:
-                    //supprimer un apprenant
+                    Ap.SuppApprenant();  //supprimer un apprenant
                 case 5:
                     for (Apprenant A : Apprenant.appr) {
                         Ap.AfficherApprenant(A);
-                    }
-                    //afficher un apprenant
+                    }          //afficher un apprenant
                     break;
                 case 6:
+                    System.out.println("vous avez quitter ! ");
                     //retour
                     break;
                 default:
@@ -157,16 +157,16 @@ public class Main {
             s = scanner.nextInt();
             switch (s) {
                 case 1:
-                    Fr.AjouterFormateur();//ajouter formateur
+                    Fr.AjouterFormateur();  //ajouter formateur
                     break;
                 case 2:
-                    Fr.ModifierFormateur();//modifier formateur
+                    Fr.ModifierFormateur();  //modifier formateur
                     break;
                 case 3:
-                    //associer un formateur
+                    Fr.AssocierFormateur();  //associer un formateur
                     break;
                 case 4:
-                    //supprimer un formateur
+                    Fr.SupprimerFormateur(); //supprimer un formateur
                 case 5:
                     for (Formateur A : Formateur.formateur) {
                         Fr.AfficherFormateur(A);
@@ -174,14 +174,15 @@ public class Main {
                     break;
                 case 6:
                     //retour
-                break;
+                    break;
                 default:
                     System.out.println("Merci d'entrer un choix valide");
-                break;
-                    }
+                    break;
             }
-
         }
+
+    }
+
     /*public static void AjouterFormateur(){
 
         System.out.println("entrer un nom : ");
@@ -237,39 +238,35 @@ public class Main {
         formateur.set(id,a);
         AfficherFormateur(a);
     }*/
-        public static void gestiondesClasses() {
-            int c = 0;
-            while (c != 5) {
-                System.out.println("Gestion des Classes \n"
-                        + "\n 1.Créer une classe "
-                        + "\n 2.Modifier une classe "
-                        + "\n 3.Supprimer une classe "
-                        + "\n 4.Afficher une classe"
-                        + "\n 5.Retour au le menu principale");
-                System.out.println("\t choisir un nombre");
-                Scanner scanner = new Scanner(System.in);
-                c = scanner.nextInt();
-                switch (c) {
-                    case 1:
-                        //Classe.AjouterClasse();//cree une classe
-                        break;
-                    case 2:
-                        //associer formateur à la classe
-                        break;
-                    case 3:
-                        //associer apprenner à la classe
-                        break;
-                    default:
-                        System.out.println("Merci d'entrer un choix valide");
-                        break;
-                }
+    public static void gestiondesClasses() {
+        Classe cls = new Classe();
+        int c = 0;
+        while (c != 5) {
+            System.out.println("Gestion des Classes \n"
+                    + "\n 1.Créer une classe "
+                    + "\n 2.Modifier une classe "
+                    + "\n 3.Supprimer une classe "
+                    + "\n 4.Afficher une classe"
+                    + "\n 5.Retour au le menu principale");
+            System.out.println("\t choisir un nombre");
+            Scanner scanner = new Scanner(System.in);
+            c = scanner.nextInt();
+            switch (c) {
+                case 1:
+                    cls.AjouterClasse(); //cree une classe
+                    break;
+                case 2:
+                    cls.ModifierClasse(); //associer formateur à la classe
+                    break;
+                case 3:
+                    //associer apprenner à la classe
+                    break;
+                default:
+                    System.out.println("Merci d'entrer un choix valide");
+                    break;
             }
-        /*public static void AjouterClasse(){
-            System.out.println("entrer un nom : ");
-            String nom = sc.nextLine();
-            Classe a = new Classe (nom);
-            classe.add(a);
-        }*/
-
         }
+
+
+    }
 }
