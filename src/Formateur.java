@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -103,31 +104,39 @@ public class Formateur extends Personne{
     }
     public void AssocierFormateur() {
         System.out.println("entre l'Id du  formateur : ");
-
         Formateur b = null;
         for (Formateur a : formateur) {
             if (a.getId() == sc.nextInt()) {
                 b = a;
             }
         }
+        sc.nextLine();
         System.out.println("entre le nom de classe");
+        String L = sc.nextLine();
         ArrayList<Classe> C = Classe.classe;
+
         for (Classe a : C) {
-            if (a.getNom().equals(sc.nextLine())) {
-                Classe cl = a;
+            if (a.getNom().equals(L)) {
+                a.setFormateur(b);
+                b.setClasse(a);
+                System.out.println("Bien Associer !");
+                break;
+            } else {
+                System.out.println("Non Associer !");
             }
         }
-        classe.setFormateur(b);
-        System.out.println("Bien Associer !");
-
     }
     public void SupprimerFormateur(){
         System.out.println("entre l'Id de formateur que vous voullez :");
+        int Id =sc.nextInt();
         for (Formateur a : formateur) {
-            if (a.getId() == sc.nextInt()) {
+            if (a.getId()==Id) {
                 formateur.remove(a);
+                System.out.println("Formateur bien supprimer !");
+                break;
+            }else{
+                System.out.println("formateur non trouvé !");
             }
-
         }
     }
 
@@ -136,7 +145,7 @@ public class Formateur extends Personne{
         return "Formateur{" +
                 "specialite='" + specialite + '\'' +
                 ", salaire=" + salaire +
-                ", classe=" + classe +
+                ", classe=" + classe.getNom()+
                 '}';
     }
 }

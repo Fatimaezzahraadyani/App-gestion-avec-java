@@ -45,6 +45,9 @@ public class Classe {
         Classe a = new Classe (nom);
         classe.add(a);
     }
+    public void AfficherClasse(Classe a){
+        System.out.println(a.toString());
+    }
 
     public void ModifierClasse(){
         Formateur Fr = new Formateur();
@@ -62,13 +65,15 @@ public class Classe {
             }
         Fr.AssocierFormateur();
         }
+    }
 
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        return "Classe : \n" +
+                "nom='" + nom + '\'' +
+                ", formateur=" + formateur +
+                ", Apprenants=" + Apprenants +
+                '}';
     }
 }
 

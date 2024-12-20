@@ -7,9 +7,10 @@ public class Apprenant extends Personne{
     private Classe classe ;
     private ArrayList<Double> notes=new ArrayList<Double>();
 
-   public Apprenant(int Id,String nom,String prenom,String email,Classe classe){
+   public Apprenant(int Id,String nom,String prenom,String email,double note, Classe classe){
         super(Id,nom,prenom,email);
         this.classe = classe;
+        this.notes.add(note);
     }
 
     public Apprenant() {
@@ -49,8 +50,11 @@ public class Apprenant extends Personne{
         int Id=sc.nextInt();
         sc.nextLine();
 
+        System.out.println("entrer la note : ");
+        Double note=sc.nextDouble();
+        sc.nextLine();
 
-        Apprenant a=new Apprenant(Id,nom,prenom,email,null);
+        Apprenant a=new Apprenant(Id,nom,prenom,email,note,null);
         appr.add(a);
 
     }
@@ -62,20 +66,22 @@ public class Apprenant extends Personne{
     public void ModifierApprenant(){
         System.out.println("Veuillez saisir ID d'apprenant : ");
         int id= sc.nextInt();
+        sc.nextLine();
+        for (Apprenant a : appr){
+            if(a.getId()==id){
+                System.out.println("entre le nouveau ID : ");
+                a.setId(sc.nextInt());
+                System.out.println("entrer le nouveau nom : ");
+                a.setNom(sc.nextLine());
 
-        System.out.println("entrer le nouveau nom : ");
-        String name=sc.nextLine();
-        System.out.println("entrer le nouveau prenom : ");
-        String prenom=sc.nextLine();
+                System.out.println("entrer le nouveau prenom : ");
+                a.setPrenom(sc.nextLine());
 
-        System.out.println("entrer le nouveau email : ");
-        String email=sc.nextLine();
-
-        Apprenant a = new Apprenant(id,name,prenom,email,null);
-        appr.set(id,a);
-
+                System.out.println("entrer le nouveau email : ");
+                a.setEmail(sc.nextLine());
+            }
         AfficherApprenant(a);
-
+    }
     }
     public void AssocierApprenant(){
         System.out.println("entrer l'Id d'apprenant :");
@@ -86,6 +92,7 @@ public class Apprenant extends Personne{
             }
         }
         System.out.println("entre le nom de classe");
+        String S = sc.nextLine();
         ArrayList<Classe> C = Classe.classe;
             for (Classe a : C) {
                 if (a.getNom().equals(sc.nextLine())) {
@@ -97,12 +104,16 @@ public class Apprenant extends Personne{
 
             }
     }
-    public void SuppApprenant(){
+    public void SuppApprenant() {
         System.out.println("Veuillez saisir ID d'apprenant que vous voulez supprimer: ");
         int Id = sc.nextInt();
-        for (Apprenant a : appr){
-            if(a.getId()==Id){
+        for (Apprenant a : appr) {
+            if (a.getId() == Id) {
                 appr.remove(a);
+                System.out.println("Bien Supprimé !");
+                break;
+            } else {
+                System.out.println("apprenant non trouvé ");
             }
         }
     }

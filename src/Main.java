@@ -261,6 +261,11 @@ public class Main {
                 case 3:
                     //associer apprenner à la classe
                     break;
+                case 4 :
+                    for (Classe a : Classe.classe) {
+                        cls.AfficherClasse(a);
+                    }
+                    break;
                 default:
                     System.out.println("Merci d'entrer un choix valide");
                     break;
