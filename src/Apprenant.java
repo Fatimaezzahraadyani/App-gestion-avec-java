@@ -85,19 +85,31 @@ public class Apprenant extends Personne{
     }
     public void AssocierApprenant(){
         System.out.println("entrer l'Id d'apprenant :");
+        int ID = sc.nextInt();
+        sc.nextLine();
         Apprenant p = null;
         for (Apprenant a : appr){
             if(a.getId() == sc.nextInt()){
                 p = a;
+                break;
             }
         }
+        if(p==null){
+            System.out.println("apprenant non trouvé !");
+            return;
+        }
+
         System.out.println("entre le nom de classe");
+        //sc.nextLine();
         String S = sc.nextLine();
-        ArrayList<Classe> C = Classe.classe;
-            for (Classe a : C) {
+        boolean trouveClasse = false;
+
+            for (Classe a : Classe.classe) {
                 if (a.getNom().equals(sc.nextLine())) {
                     a.Apprenants.add(p);
+                    p.setClasse(a);
                     System.out.println("Bien Associer !");
+                    trouveClasse=true;
                 }else{
                     System.out.println("cree une classe premiérement");
                 }

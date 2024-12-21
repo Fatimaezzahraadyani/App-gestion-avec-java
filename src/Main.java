@@ -89,58 +89,6 @@ public class Main {
             }
         }
     }
-    //static Scanner sc = new Scanner(System.in);
-
-    /*public static void AjouterApprenant(){
-
-        System.out.println("entrer un nom : ");
-        String nom=sc.nextLine();
-
-        System.out.println("entrer un prenom : ");
-        String prenom=sc.nextLine();
-
-        System.out.println("enter un email : ");
-        String email=sc.nextLine();
-
-        System.out.println("entrer un Id : ");
-        int Id=sc.nextInt();
-        sc.nextLine();
-
-
-        Apprenant a=new Apprenant(Id,nom,prenom,email,null);
-        appr.add(a);
-
-    }
-    public static void AfficherApprenant(Apprenant a){
-        System.out.println(a.toString());
-    }
-
-
-    public static void ModifierApprenant(){
-        System.out.println("Veuillez saisir ID d'apprenant : ");
-        int id= sc.nextInt();
-
-        System.out.println("entrer le nouveau nom : ");
-        String name=sc.nextLine();
-        System.out.println("entrer le nouveau prenom : ");
-        String prenom=sc.nextLine();
-
-        System.out.println("entrer le nouveau email : ");
-        String email=sc.nextLine();
-
-        Apprenant a = new Apprenant(id,name,prenom,email,null);
-        appr.set(id,a);
-
-        AfficherApprenant(a);
-
-    }
-    public static void SuppApprenants(){
-        System.out.println("Veuillez saisir ID d'apprenant que vous voulez supprimer: ");
-        int id= sc.nextInt();
-
-
-
-    }*/
     public static void gestionFormateurs() {
         Formateur Fr = new Formateur();
         int s = 0;
@@ -183,61 +131,6 @@ public class Main {
 
     }
 
-    /*public static void AjouterFormateur(){
-
-        System.out.println("entrer un nom : ");
-        String nom=sc.nextLine();
-
-        System.out.println("entrer un prenom : ");
-        String prenom=sc.nextLine();
-
-        System.out.println("entrer un Id : ");
-        int Id=sc.nextInt();
-        sc.nextLine();
-
-        System.out.println("enter un email : ");
-        String email=sc.nextLine();
-
-        System.out.println("entrer la spécialiter : ");
-        String specialite=sc.nextLine();
-
-        System.out.println("entrer le salaire : ");
-        double salaire=sc.nextDouble();
-
-
-        Formateur a=new Formateur(Id,nom,prenom,email,specialite,salaire,null);
-        formateur.add(a);
-    }
-    public static void AfficherFormateur(Formateur a){
-        System.out.println(a.toString());
-    }
-    public static void ModifierFormateur(){
-        System.out.println("Veuillez saisir ID de formateur : ");
-        int id= sc.nextInt();
-
-        System.out.println("entrer le nouveau nom : ");
-        String name=sc.nextLine();
-
-        System.out.println("entrer le nouveau prenom : ");
-        String prenom=sc.nextLine();
-
-        System.out.println("entrer le nouveau Id : ");
-        int Id=sc.nextInt();
-        sc.nextLine();
-
-        System.out.println("entrer le nouveau email : ");
-        String email =sc.nextLine();
-
-        System.out.println("entrer la nouvelle specialiter :");
-        String specialite=sc.next();
-
-        System.out.println("entrer le nouveau salaire :");
-        double salaire=sc.nextDouble();
-
-        Formateur a = new Formateur(id,name,prenom,email,specialite,salaire,null);
-        formateur.set(id,a);
-        AfficherFormateur(a);
-    }*/
     public static void gestiondesClasses() {
         Classe cls = new Classe();
         int c = 0;
@@ -256,10 +149,10 @@ public class Main {
                     cls.AjouterClasse(); //cree une classe
                     break;
                 case 2:
-                    cls.ModifierClasse(); //associer formateur à la classe
+                    cls.ModifierClasse(); //modifier classe
                     break;
                 case 3:
-                    //associer apprenner à la classe
+                    cls.SupprimeClasse();//associer apprenner à la classe
                     break;
                 case 4 :
                     for (Classe a : Classe.classe) {

@@ -1,6 +1,7 @@
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+
 
 public class Formateur extends Personne{
     static ArrayList<Formateur> formateur = new ArrayList<>();
@@ -37,13 +38,22 @@ public class Formateur extends Personne{
         this.specialite = specialite;
     }
 
-    public Classe getClasse() {
+    public Classe getClasse(Formateur b) {
         return classe;
     }
 
     public void setClasse(Classe classe) {
         this.classe = classe;
     }
+
+    public static ArrayList<Formateur> getFormateur() {
+        return formateur;
+    }
+
+    public static void setFormateur(ArrayList<Formateur> formateur) {
+        Formateur.formateur = formateur;
+    }
+
     static Scanner sc = new Scanner(System.in);
     public Formateur AjouterFormateur(){
 
@@ -74,58 +84,72 @@ public class Formateur extends Personne{
     public void AfficherFormateur(Formateur a){
         System.out.println(a.toString());
     }
-    public void ModifierFormateur(){
+    public void ModifierFormateur() {
+        boolean Trouve = false ;
         System.out.println("Veuillez saisir ID de formateur : ");
-        int id= sc.nextInt();
+        int id = sc.nextInt();
         sc.nextLine();
+        Trouve= true;
+        for (Formateur T : formateur) {
+            if (T.getId() == id) {
+                System.out.println("entrer le nouveau nom : ");
+                String newname = sc.nextLine();
 
-        System.out.println("entrer le nouveau nom : ");
-        String name=sc.nextLine();
+                System.out.println("entrer le nouveau prenom : ");
+                String newprenom = sc.nextLine();
 
-        System.out.println("entrer le nouveau prenom : ");
-        String prenom=sc.nextLine();
+                System.out.println("entrer le nouveau Id : ");
+                int newId = sc.nextInt();
+                sc.nextLine();
 
-        System.out.println("entrer le nouveau Id : ");
-        int Id=sc.nextInt();
-        sc.nextLine();
+                System.out.println("entrer le nouveau email : ");
+                String newemail = sc.nextLine();
 
-        System.out.println("entrer le nouveau email : ");
-        String email =sc.nextLine();
+                System.out.println("entrer la nouvelle specialiter :");
+                String newspecialite = sc.next();
 
-        System.out.println("entrer la nouvelle specialiter :");
-        String specialite=sc.next();
+                System.out.println("entrer le nouveau salaire :");
+                double newsalaire = sc.nextDouble();
 
-        System.out.println("entrer le nouveau salaire :");
-        double salaire=sc.nextDouble();
+                Formateur a = new Formateur(id, newname, newprenom, newemail, newspecialite, newsalaire, null);
+                formateur.set(id, a);
+                AfficherFormateur(a);
+                break;
+            }
+        }
+        if(!Trouve){
+                System.out.println("Formateur non trouvé !!");
+            }
 
-        Formateur a = new Formateur(id,name,prenom,email,specialite,salaire,null);
-        formateur.set(id,a);
-        AfficherFormateur(a);
     }
+
     public void AssocierFormateur() {
-        System.out.println("entre l'Id du  formateur : ");
+
+
+        System.out.println("entrer l'Id du formateur :");
+        //sc.nextInt();
         Formateur b = null;
-        for (Formateur a : formateur) {
-            if (a.getId() == sc.nextInt()) {
+        for (Formateur a : formateur){
+            if(a.getId() == sc.nextInt()){
                 b = a;
             }
         }
         sc.nextLine();
         System.out.println("entre le nom de classe");
         String L = sc.nextLine();
-        ArrayList<Classe> C = Classe.classe;
-
+        ArrayList<Classe>C=Classe.classe;
         for (Classe a : C) {
-            if (a.getNom().equals(L)) {
+            if (a.getNom().equals(sc.nextLine())) {
                 a.setFormateur(b);
                 b.setClasse(a);
                 System.out.println("Bien Associer !");
-                break;
-            } else {
-                System.out.println("Non Associer !");
+            }else{
+                System.out.println("cree une classe premiérement");
             }
+
         }
     }
+
     public void SupprimerFormateur(){
         System.out.println("entre l'Id de formateur que vous voullez :");
         int Id =sc.nextInt();
@@ -145,7 +169,7 @@ public class Formateur extends Personne{
         return "Formateur{" +
                 "specialite='" + specialite + '\'' +
                 ", salaire=" + salaire +
-                ", classe=" + classe.getNom()+
+                ", classe=" + classe +
                 '}';
     }
 }
